@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import SampleHost from './components/SampleHost'
+import SampleContainer from './containers/SampleContainer'
 
 class App extends Component {
-  render() {
-    return <SampleHost path={'auto-complete'} />
+  render () {
+    return <div>
+      <SampleContainer path='fetch' title='Fetch' />
+    </div>
   }
 }
 

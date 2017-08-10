@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable'
 import { APP } from '../../config/constants'
 import { updateResults } from '../utility'
 
-const RxJsSampleAutoComplete = {
+const RxJsSampleDragAndDrop = {
   fetchUrl(isUrlInvalid) {
     const url = APP.REST_BASE_URL + '/to-dos' + (isUrlInvalid ? 'x' : '')
     const config = { method: 'GET' };
@@ -30,5 +30,5 @@ const RxJsSampleAutoComplete = {
 }
 
 // HACK
-window.RxJsSampleAutoComplete = RxJsSampleAutoComplete
-window.RxJsSampleAutoComplete.fetchUrl()
+window.RxJsSampleDragAndDrop = RxJsSampleDragAndDrop
+window.RxJsSampleDragAndDrop.fetchUrl()
