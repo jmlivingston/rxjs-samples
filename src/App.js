@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import AutoComplete from './samples/AutoComplete'
+import SampleHost from './components/SampleHost'
 
 class App extends Component {
   render() {
-    return <AutoComplete />
+    return <SampleHost path={'auto-complete'} />
   }
 }
 
