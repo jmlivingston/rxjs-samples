@@ -1,7 +1,6 @@
-// Drag and Drop
 const sample = {
   fetchUrl: (isUrlInvalid) => {
-    const url = constants.APP.REST_BASE_URL + '/to-dos' + (isUrlInvalid ? 'x' : '')
+    const url = isUrlInvalid ? 'not-a-url' : constants.APP.REST_BASE_URL + '/to-dos'
     const config = { method: 'GET' };
 
     const obs = Rx.Observable.fromPromise(

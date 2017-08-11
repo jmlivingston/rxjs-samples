@@ -1,2 +1,6 @@
-<button onclick="sample.fetchUrl()" class="btn btn-success">Fetch</button>
-<button onclick="sample.fetchUrl(true)" class="btn btn-danger">Fetch (Bad URL)</button>
+<input id="auto-complete" type="text" class="form-control" placeholder="Search for Country (minimum 3 characters)" />
+<script>
+  window.onload = () => {
+    sample.init('auto-complete')
+  }
+</script>

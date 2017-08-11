@@ -1,16 +1,13 @@
-// Fetch
 const sample = {
   fetchUrl: (isUrlInvalid) => {
-    const url = constants.APP.REST_BASE_URL + '/to-dos' + (isUrlInvalid ? 'x' : '')
+    const url = isUrlInvalid ? 'not-a-url' : constants.APP.REST_BASE_URL + '/to-dos'
     const config = { method: 'GET' };
 
     const obs = Rx.Observable.fromPromise(
       fetch(url, config)
     ).switchMap(response => {
       if (response.ok) {
-        return Rx.Observable.fromPromise(
-          response.json()
-        )
+        return Rx.Observable.fromPromise(response.json())
       } else {
         return Rx.Observable.throw(response)
       }
