@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-sm-2">
+    <a class="btn btn-link" href="/samples/autoComplete">Auto Complete</a>
+    <br />
+    <a class="btn btn-link" href="/samples/dragAndDrop">Drag and Drop</a>
+    <br />
+    <a class="btn btn-link" href="/samples/fetch">Fetch</a>
+  </div>
+  <div class="col-sm-10">
+    <h1>{{{title}}}</h1>
+    <div class="row">
+      <div class='col-sm-6'>
+        {{> (partial partialPath) }}
+        <hr />
+        <h2>Results<span id="status"></span></h2>
+        <hr />
+        <pre><code id="results"></code></pre>
+      </div>
+      <div class='col-sm-6'>
+        <pre><code id="source">{{{sourceCode}}}</code></pre>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/scripts/constants.js"></script>
+<script src="/scripts/utility.js"></script>
+<script src="/scripts/samples/{{key}}.js"></script>
+<script>
+  sample.init()
+</script>
