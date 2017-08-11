@@ -1,10 +1,12 @@
 {
-  "name": "express-generator-test",
+  "name": "rxjs-training",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "debug": "nodemon app.js",
-    "start": "node ./bin/www"
+    "start": "node ./app.js",
+    "start-original": "node ./bin/www",
+    "postinstall": "npm install body-parser cookie-parser debug express hbs highlight.js morgan serve-favicon"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
