@@ -1,2 +1,22 @@
-<button onclick="sample.fetchUrl()" class="btn btn-success">Fetch</button>
-<button onclick="sample.fetchUrl(true)" class="btn btn-danger">Fetch (Bad URL)</button>
+<div class="bg-primary text-white drag-button"><br />And<br/>Me!</div>
+<div class="bg-success text-white drag-button"><br />Drag<br/>Me</div>
+
+<style>
+  .drag-button {
+    /* Required for Drag and Drop */
+    position: absolute;
+    z-index: 1;
+
+    /* Optional */
+    border-radius: 50px;
+    cursor: move;
+    height: 100px;
+    text-align: center;
+    width: 100px;
+    z-index: 1;
+  }
+</style>
+
+<script>
+  sample.init('.drag-button')
+</script>

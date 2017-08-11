@@ -1,27 +1,35 @@
 const sample = {
-  fetchUrl: (isUrlInvalid) => {
-    const url = isUrlInvalid ? 'not-a-url' : constants.APP.REST_BASE_URL + '/to-dos'
-    const config = { method: 'GET' };
+  dragDrop: (dragTarget => {
+    const posList = []
+    const mouseUp = Rx.Observable.fromEvent(
+      document, 'mouseup')
+    const mouseMove = Rx.Observable.fromEvent(
+      document, 'mousemove')
+    const mouseDown = Rx.Observable.fromEvent(
+      dragTarget, 'mousedown')
 
-    const obs = Rx.Observable.fromPromise(
-      fetch(url, config)
-    ).switchMap(response => {
-      if (response.ok) {
-        return Rx.Observable.fromPromise(
-          response.json()
-        )
-      } else {
-        return Rx.Observable.throw(response)
-      }
+    const originalTop = dragTarget.getBoundingClientRect().top
+      - (dragTarget.offsetWidth / 2)
+    const originalLeft = dragTarget.getBoundingClientRect().left
+
+    const mouseDrag = mouseDown.mergeMap(md => {
+      return mouseMove.map(mm => {
+        mm.preventDefault()
+        return {
+          left: mm.pageX - md.offsetX - originalLeft,
+          top: mm.pageY - md.offsetY - originalTop
+        }
+      }).takeUntil(mouseUp)
     })
-    
-    obs.subscribe(
-      results => utility.updateResults('Next', JSON.stringify(results, null, 2)),
-      error => utility.updateResults('Error', error.status + ' - ' + error.statusText),
-      () => utility.updateResults('Complete')
-    )
-  },
-  init: () => {
-    sample.fetchUrl()
+    const subscription = mouseDrag.subscribe(pos => {
+      dragTarget.style.top = pos.top + 'px'
+      dragTarget.style.left = pos.left + 'px'
+      posList.push(pos.top + ' X ' + pos.left)
+      utility.updateResults('Next', JSON.stringify(posList, null, 2))
+    })
+  }),
+  init: (selector) => {
+    document.querySelectorAll(selector)
+      .forEach(sample.dragDrop)
   }
 }
